@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check-In Web App</title>
+    <link rel="stylesheet" href="restaurants.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+      <!-- Side Menu -->
+      <div class="side-menu">
+        <h2>Menu</h2>
+        <a href="#">Home</a>
+        <a href="#">Reservations</a>
+        <a href="#">Contact</a>
+        <a href="#">Language</a>
+        <div class="country">
+          <input type="checkbox" id="dropdown-toggle" />
+          <label for="dropdown-toggle" class="dropdown-label">Country</label>
+
+          <div class="dropdown-content">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Reservations</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+        <a href="#">Contact</a>
+        <a href="#">Language</a>
+      </div>
+    </div>
+
+
+    <form action="/app.js" class="search-form">
+      <div class="country-buttons">
+        <button type="button"  class="home-page-button select-between">USA</button>
+        <button type="button"  class="home-page-button select-between">UK</button>
+        <button type="button"  class="home-page-button select-between">Israel</button>
+      </div>
+      <div class="search-map-button-input">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search restaurant..."
+        />
+        <button type="submit" class="home-page-button">
+          OR SEARCH IN MAP
+        </button>
+      </div>
+    </form>
+
+    <div class="scroll-block-container">
+      <h2>HOT PICKS FOR YOU!</h2>
+      <div class="scroll-block">
+        <ul>
+          <li>
+            <div class="restaurant-item">
+              <div class="restaurant-info">
+                <div class="name">ITALIANO</div>
+                <div class="address">456 Ocean Rd, Seaville</div>
+              </div>
+              <img src="dish.jpg" alt="Sushi Star" />
+            </div>
+          </li>
+          <li>
+            <div class="restaurant-item">
+              <div class="restaurant-info">
+                <div class="name">STELLAMARIS</div>
+                <div class="address">456 Ocean Rd, Seaville</div>
+              </div>
+              <img src="dish.jpg" alt="Sushi Star" />
+            </div>
+          </li>
+          <li>
+            <div class="restaurant-item">
+              <div class="restaurant-info">
+                <div class="name">3BEEEER</div>
+                <div class="address">456 Ocean Rd, Seaville</div>
+              </div>
+              <img src="dish.jpg" alt="Sushi Star" />
+            </div>
+          </li>
+          <li>
+            <div class="restaurant-item">
+              <div class="restaurant-info">
+                <div class="name">NAJMA</div>
+                <div class="address">456 Ocean Rd, Seaville</div>
+              </div>
+              <img src="dish.jpg" alt="Sushi Star" />
+            </div>
+          </li>
+          <li>
+            <div class="restaurant-item">
+              <div class="restaurant-info">
+                <div class="name">Sushi Star</div>
+                <div class="address">456 Ocean Rd, Seaville</div>
+              </div>
+              <img src="dish.jpg" alt="Sushi Star" />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <script>
+      const selectBetButtons = document.querySelectorAll(".select-between");
+
+      const selectButton = function (button) {
+        const siblings = Array.from(button.parentElement.children);
+        siblings.forEach((but) => {
+          but.classList.remove("active");
+        });
+        button.classList.add("active");
+      };
+
+      selectBetButtons.forEach((but) => {
+        but.addEventListener("click", () => selectButton(but));
+      });
+
+      function toggleMenu() {
+        document.getElementById("menuContent").classList.toggle("show");
+      }
+
+      function toggleCountryList() {
+        document.getElementById("countryList").classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>
