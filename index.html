@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check-In Web App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+      <!-- Side Menu -->
+      <div class="side-menu">
+        <h2>Menu</h2>
+        <a href="#">Home</a>
+        <a href="#">Reservations</a>
+        <a href="#">Contact</a>
+        <a href="#">Language</a>
+        <div class="country">
+          <input type="checkbox" id="dropdown-toggle" />
+          <label for="dropdown-toggle" class="dropdown-label">Country</label>
+
+          <div class="dropdown-content">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Reservations</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+        <a href="#">Contact</a>
+        <a href="#">Language</a>
+      </div>
+      <div class="lang-container">
+        <input type="checkbox" id="lang-toggle" />
+        <label for="lang-toggle" class="lang-icon">🌐</label>
+        <div class="lang-dropdown">
+          <a href="#">English</a>
+          <a href="#">Hebrew</a>
+        </div>
+      </div>
+    </div>
+    <div class="category-switcher">
+      <button class="home-page-button select-between active">RESTAURANT</button>
+      <button class="home-page-button select-between">EVENT</button>
+    </div>
+
+    <div class="about-us">
+      <div id="about" class="about-us-section">
+        <h2>Book Your Table With Just A Few Clicks</h2>
+        <p>hundereds of restaurants are waiting for you !!</p>
+      </div>
+    </div>
+
+    <div class="find-restaurant-wrapper">
+      <button class="find-restaurant home-page-button">FIND RESTAURANT</button>
+    </div>
+
+    <div class="homepage-img">
+      <img src="dish.jpg" alt="homepage-img" />
+    </div>
+
+    <script>
+      const selectBetButtons = document.querySelectorAll(".select-between");
+      const findRestaurantButton = document.querySelector(".find-restaurant-wrapper button");
+
+      findRestaurantButton.addEventListener("click", () => {
+        window.location.href = "restaurants.html";
+      });
+
+      const selectButton = function (button) {
+        const siblings = Array.from(button.parentElement.children);
+        siblings.forEach((but) => {
+          but.classList.remove("active");
+        });
+        button.classList.add("active");
+      };
+
+      selectBetButtons.forEach((but) => {
+        but.addEventListener("click", () => selectButton(but));
+      });
+
+      function toggleMenu() {
+        document.getElementById("menuContent").classList.toggle("show");
+      }
+
+      function toggleCountryList() {
+        document.getElementById("countryList").classList.toggle("show");
+      }
+    </script>
+  </body>
+</html>
